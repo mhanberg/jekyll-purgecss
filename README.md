@@ -1,5 +1,8 @@
 # Jekyll Purgecss
 
+[![Build Status](https://travis-ci.com/mhanberg/jekyll-purgecss.svg?branch=master)](https://travis-ci.com/mhanberg/jekyll-purgecss)
+[![Gem Version](https://badge.fury.io/rb/jekyll-purgecss.svg)](https://badge.fury.io/rb/jekyll-purgecss)
+
 A Jekyll plugin for Purgecss.
 
 ## Installation
