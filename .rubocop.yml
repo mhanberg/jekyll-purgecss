@@ -1,0 +1,12 @@
+require: rubocop-jekyll
+
+inherit_gem:
+  rubocop-jekyll: .rubocop.yml
+
+AllCops:
+  Include:
+    - spec/**/*.rb
+    - jekyll-purgecss.gemspec
+
+Style/StringLiterals:
+  AutoCorrect: true
