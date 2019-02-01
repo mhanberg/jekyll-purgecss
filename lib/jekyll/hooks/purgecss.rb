@@ -1,11 +1,13 @@
 # frozen_string_literal: true
 
-Jekyll::Hooks.register(:site, :post_write) do |_site|
+Jekyll::Hooks.register(:site, :post_write) do |site|
   if Jekyll.env == "production"
     raise PurgecssNotFoundError unless File.file?("./node_modules/.bin/purgecss")
 
     raise PurgecssRuntimeError unless system(
-      "./node_modules/.bin/purgecss --config ./purgecss.config.js --out _site/css/"
+      "./node_modules/.bin/purgecss " \
+      "--config ./purgecss.config.js " \
+      "--out _site/#{site.config.fetch("css_dir", "css")}/"
     )
   end
 end

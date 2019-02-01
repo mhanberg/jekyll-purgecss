@@ -20,6 +20,8 @@ And then add this line to your application's `_config.yml`:
 
 plugins:
   - jekyll-purgecss
+
+css_dir: "<css_dir>" # defaults to "css"
 ```
 
 ## Usage
