@@ -24,6 +24,8 @@ plugins:
 css_dir: "<css_dir>" # defaults to "css"
 ```
 
+jekyll-purgecss only runs in production, so make sure that `JEKYLL_ENV=production` on the server where you build your site.
+
 ## Usage
 
 Make sure you have [purgecss](https://www.purgecss.com/#cli) installed and has its binary located at `./node_modules/.bin/purgecss`.
