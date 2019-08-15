@@ -35,7 +35,7 @@ Add your Purgecss configuration to a `purgecss.config.js` file in the root of yo
 ```javascript
 // purgecss.config.js
 
-module.exports {
+module.exports = {
   // These are the files that Purgecss will search through
   content: ["./_site/**/*.html"],
 
