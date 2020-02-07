@@ -7,7 +7,7 @@ Jekyll::Hooks.register(:site, :post_write) do |site|
     raise PurgecssRuntimeError unless system(
       "./node_modules/.bin/purgecss " \
       "--config ./purgecss.config.js " \
-      "--out #{site.config.fetch("destination")}/#{site.config.fetch("css_dir", "css")}/"
+      "--output #{site.config.fetch("destination")}/#{site.config.fetch("css_dir", "css")}/"
     )
   end
 end
