@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    jekyll-purgecss (0.2.0)
+    jekyll-purgecss (0.3.0)
 
 GEM
   remote: https://rubygems.org/
@@ -104,4 +104,4 @@ DEPENDENCIES
   rubocop-jekyll (~> 0.3.0)
 
 BUNDLED WITH
-   1.17.1
+   1.17.2
