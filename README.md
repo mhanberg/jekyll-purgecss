@@ -57,6 +57,57 @@ module.exports = {
   defaultExtractor: content => content.match(/[\w-/:]+(?<!:)/g) || []
 };
 ```
+
+## Deployment
+
+Please note that this plugin isn't supported by [GitHub Pages](https://pages.github.com/versions/), which means by default you are not able to use it, when you are hosting your site at GitHub Pages. 
+
+However if switching to another hosting platform (e.g.[Netlify](https://www.netlify.com/)) is nothing you want to do, there's the option to perform the build process via [GitHub Actions](https://github.com/features/actions).
+
+To do that, you need to create a yml-workflow-file inside `.github/workflows` of your repository that represents your build process. This could look like the following:
+
+```yaml
+name: Build and deploy Jekyll to GitHub Pages
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  github-pages:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      # Install Ruby to be able to build the site using Jekyll
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 2.7
+      # Install Node as this is needed for PurgeCSS
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: '14'
+      # Install PurgeCSS (needs to be in your package.json)
+      - run: npm install
+      # Build site
+      - name: Install dependencies & Build Site
+        uses: limjh16/jekyll-action-ts@v2
+        with:
+          enable_cache: true
+      # Push the compiled _site-folder as branch into your GitHub repository
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./_site
+```
+See:
+- https://github.com/limjh16/jekyll-action-ts/ for more details about the GitHub Action compiling your site
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
